@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Book Slot</title>
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin-top:80px;
+        }
+        button{
+            padding:10px 20px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Hello {{name}}</h2>
+<h3>Select Slot</h3>
+
+<form action="/book" method="post">
+    <input type="hidden" name="name" value="{{name}}">
+
+    {% for slot,data in slots.items() %}
+        <button type="submit" name="slot" value="{{slot}}">
+            {{slot}} ({{data.capacity - data.booked|length}} left)
+        </button>
+    {% endfor %}
+</form>
+
+<script>
+    const slots = {{ slots|tojson }};
+    let full = false;
+
+    for(let key in slots){
+        if(slots[key].booked.length >= slots[key].capacity){
+            full = true;
+        }
+    }
+
+    if(full){
+        alert("Some slots are full!");
+    }
+</script>
+
+</body>
+</html>
