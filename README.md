@@ -1,7 +1,7 @@
 # pre
 
-run:
-pip install fastapi uvicorn jinja2 python-multipart
+run to install<br>:
+pip install fastapi uvicorn jinja2 python-multipart<br>
 
-run:
-uvicorn main:app --reload
+run to excute:<br>
+uvicorn main:app --reload<br>
